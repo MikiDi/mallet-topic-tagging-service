@@ -4,7 +4,7 @@ MAINTAINER Michaël Dierick "michael@dierick.io"
 ENV MEMORY=4g
 ENV TRAIN_PATH=/data
 ENV INPUT_PATH=/tmp/mallet-data/input-data
-ENV OUTPUT_PATH=/tmp/mallet-data/input-data
+ENV OUTPUT_PATH=/tmp/mallet-data/output-data
 # mu-python-template env vars
 ENV APP_ENTRYPOINT web
 ENV LOG_LEVEL info
@@ -24,8 +24,10 @@ RUN ln -s /app /usr/src/app/ext \
      && cd /usr/src/app \
      && pip3 install -r requirements.txt
 
-ADD . /
 ADD . /app
+
+ADD ./mallet /
+RUN chmod u+x /start.sh /setup-memory.sh /import-directory.sh /infer-topics.sh
 
 EXPOSE 80
 
