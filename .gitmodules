@@ -1,3 +1,4 @@
 [submodule "mu-python-template"]
 	path = mu-python-template
 	url = git@github.com:MikiDi/mu-python-template.git
+    branch = python3-port
