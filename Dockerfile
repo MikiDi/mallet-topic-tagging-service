@@ -22,7 +22,7 @@ ADD ./mu-python-template /usr/src/app
 
 RUN ln -s /app /usr/src/app/ext \
      && cd /usr/src/app \
-     && pip3 install -r requirements.txt
+     && if [ -f requirements.txt ]; then pip3 install -r requirements.txt; fi
 
 ADD . /app
 
