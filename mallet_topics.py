@@ -62,11 +62,13 @@ def write_mallet_input(contents, dir):
     retval = {}
     for subject, text in contents.items():
         fn = helpers.generate_uuid()
-        retval[fn] = subject
         path = os.path.join(dir, fn)
-        f = open(path, 'w')
-        f.write(text)
-        f.close()
+        with open(path, 'w') as f:
+            res = f.write(text)
+            if res > 0:
+                retval[fn] = subject
+            else:
+                helpers.log("Couldn't write {} to MALLET input file".format(fn))
     return retval
 
 def run():
