@@ -12,4 +12,7 @@ echo "Importing directory"
 echo "Inferring topics"
 /infer-topics.sh
 
-cat /tmp/mallet-data/output-data/output.txt
+echo "Clearing input files"
+rm -rf $INPUT_PATH/*
+
+#cat /tmp/mallet-data/output-data/output.txt
